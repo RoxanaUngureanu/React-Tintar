@@ -3,12 +3,10 @@ require('styles/App.css');
 
 import React from 'react';
 
-var Board = React.createClass ({
+var BoardDesign = React.createClass ({
   render: function(){
-
     return (
       <div>
-        <h1>TINTAR, FRATE!</h1>
         <div className="first-board">
           <div className="inner-boards"></div>
           <div className="inner-boards"></div>
@@ -22,4 +20,4 @@ var Board = React.createClass ({
   }
 });
 
-export default Board;
+export default BoardDesign;
