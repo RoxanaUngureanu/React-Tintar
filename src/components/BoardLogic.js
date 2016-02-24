@@ -3,15 +3,11 @@ require('styles/App.css');
 
 import React from 'react';
 import BoardDesign from './BoardDesign';
-import Points from './Points';
+import Point from './Points';
 
 var BoardLogic = React.createClass ({
   getInitialState: function(){
-    //var board=[[0,0,0],[0,0,0],[0,0,0]];
     var board=[];
-    for (var i=0; i<24; i++) {
-      board.push({number: i});
-    }
     var size = 400;
     return {
       board:board,
@@ -22,28 +18,22 @@ var BoardLogic = React.createClass ({
     }
   },
   render: function(){
-    //var points=[];
-    //var top = 0;
-    //var left = 0;
-    //var size = 400;
-    //for (var i=0; i<3; i++){
-    //    points.push(<Points key={i+size} top={top+size/2} left={left+size/2}onClick={this.onPointClick}/>);
-    //
-    //}
-    //}
-    var points = [];
-    var size = this.state.size;
-    for (var i=0; i< 3; i++) {
-      for (var j=0; j< 3; j++){
-        var value = this.state.board[0];
-        points.push(<Points key={i*size+j} top={j} left={i} onClick={this.onPointClick} value={value} />);
+    var points=[];
+    var top = 0;
+    var left = 0;
+    for (var i=0; i<24; i++){
+      if (i<8){
+        top = this.topPos((i-this.startPos(i)),400);
+        left = this.leftPos((i-this.startPos(i)),400);
+      } else  if (i>=8 && i<16){
+        top = this.topPos((i-this.startPos(i)),300)+50;
+        left = this.leftPos((i-this.startPos(i)),300)+50;
+      } else {
+        top = this.topPos((i-this.startPos(i)),200)+100;
+        left = this.leftPos((i-this.startPos(i)),200)+100;
       }
+        points.push(<Point key={i} index={i} top={top} left={left} onClick={this.onPointClick}/>);
     }
-    //for (var i=0; i<24; i++){
-    //    var point = <Points key={i} index={i} onClick={this.onPointClick}/>;
-    //    points.push(point);
-    //}
-
     return (
       <div>
         <h1>Nine Men's Morris</h1>
@@ -58,8 +48,34 @@ var BoardLogic = React.createClass ({
       </div>
     );
   },
+
+  startPos:function(index){
+    return Math.floor(index/8)*8
+  },
+
+  topPos:function(index,size){
+    if (index < 3){
+      return 0
+    } else if (index === 3 || index === 7){
+      return size/2
+    } else {
+      return size
+    }
+  },
+
+  leftPos:function(index,size){
+    if (index === 0 || index > 5){
+      return 0
+    } else if (index === 1 || index === 5){
+      return size/2
+    } else {
+      return size
+    }
+  },
+
   onPointClick:function(){
-    console.log('worksssssss')
+
+      console.log("clickity-click")
   }
 });
 
