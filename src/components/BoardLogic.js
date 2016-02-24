@@ -25,11 +25,11 @@ var BoardLogic = React.createClass ({
     var initPlayer = this.state.board[index].initPlayer;
     var currentPlayer = this.state.currentPlayer;
     if (initPlayer === -1) {
-      if (currentPlayer === 1) {
+      if ((currentPlayer === 1) && (this.state.white > 0)) {
         this.state.currentPlayer = 0;
         this.state.board[index].initPlayer = 1;
         this.state.white -= 1;
-      } else if (currentPlayer === 0) {
+      } else if (currentPlayer === 0 && (this.state.white > 0)) {
         this.state.currentPlayer = 1;
         this.state.board[index].initPlayer = 0;
         this.state.black -= 1;
@@ -42,7 +42,8 @@ var BoardLogic = React.createClass ({
     var points=[];
     var top = 0;
     var left = 0;
-    var background = '#0d290a';
+    var bgImage = "url('http://coryg89.github.io/assets/themes/img/wood-texture.jpg')";
+    var background = bgImage;
     var currentPlayer = this.state.currentPlayer;
     for (var i=0; i<24; i++){
       if (i<8){
@@ -57,11 +58,12 @@ var BoardLogic = React.createClass ({
       }
 
       if (this.state.board[i].initPlayer === 1) {
-        background="yellow"
+        //background="url('http://www.tribalectic.com/storedev/pc/catalog/BC-Ti-Bead-LtBlue.jpg')"
+        background="url('http://www.tribalectic.com/store/pc/catalog/BC-Ti-Bead-Polished.jpg')"
       } else if (this.state.board[i].initPlayer === 0) {
-        background="magenta"
+        background="url('http://www.tribalectic.com/storedev/pc/catalog/BC-Ti-Bead-Green.jpg')"
       } else {
-        background = '#0d290a';
+        background = bgImage;
       }
 
         points.push(<Point key={i} index={i} top={top} left={left} currentPlayer={currentPlayer} background={background} onClick={this.onPointClick}/>);
@@ -74,8 +76,8 @@ var BoardLogic = React.createClass ({
             <BoardDesign/>
         </div>
         <div className="game-details">
-          <p>White:{this.state.white}</p>
-          <p>Black: {this.state.black}</p>
+          <p>White: {this.state.white}</p>
+          <p>Green: {this.state.black}</p>
         </div>
       </div>
     );
