@@ -15,7 +15,7 @@ var BoardLogic = React.createClass ({
     return {
       board:board,
       white:9,
-      black:9,
+      green:9,
       currentPlayer:1,
       size:size
     }
@@ -29,10 +29,10 @@ var BoardLogic = React.createClass ({
         this.state.currentPlayer = 0;
         this.state.board[index].initPlayer = 1;
         this.state.white -= 1;
-      } else if (currentPlayer === 0 && (this.state.white > 0)) {
+      } else if (currentPlayer === 0 && (this.state.green > 0)) {
         this.state.currentPlayer = 1;
         this.state.board[index].initPlayer = 0;
-        this.state.black -= 1;
+        this.state.green -= 1;
       }
       this.forceUpdate();
     }
@@ -77,10 +77,22 @@ var BoardLogic = React.createClass ({
         </div>
         <div className="game-details">
           <p>White: {this.state.white}</p>
-          <p>Green: {this.state.black}</p>
+          <p>Green: {this.state.green}</p>
+          <button className = "button"  onClick={this.resetGame}>Reset the game!</button>
         </div>
       </div>
     );
+  },
+  resetGame:function(){
+      this.state.white = 9;
+      this.state.green = 9;
+      this.state.currentPlayer = 1;
+
+      for (var i=0; i<24;i++){
+        this.state.board[i].initPlayer = -1;
+     }
+
+      this.forceUpdate();
   },
 
   startPos:function(index){
