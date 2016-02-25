@@ -17,7 +17,8 @@ var BoardLogic = React.createClass ({
       white:9,
       green:9,
       currentPlayer:1,
-      size:size
+      size:size,
+      status:'Set a piece'
     }
   },
 
@@ -29,10 +30,12 @@ var BoardLogic = React.createClass ({
         this.state.currentPlayer = 0;
         this.state.board[index].initPlayer = 1;
         this.state.white -= 1;
+        this.state.status = 'Player 1'
       } else if (currentPlayer === 0 && (this.state.green > 0)) {
         this.state.currentPlayer = 1;
         this.state.board[index].initPlayer = 0;
         this.state.green -= 1;
+        this.state.status = 'Player 2'
       }
       this.forceUpdate();
     }
@@ -58,7 +61,6 @@ var BoardLogic = React.createClass ({
       }
 
       if (this.state.board[i].initPlayer === 1) {
-        //background="url('http://www.tribalectic.com/storedev/pc/catalog/BC-Ti-Bead-LtBlue.jpg')"
         background="url('http://www.tribalectic.com/store/pc/catalog/BC-Ti-Bead-Polished.jpg')"
       } else if (this.state.board[i].initPlayer === 0) {
         background="url('http://www.tribalectic.com/storedev/pc/catalog/BC-Ti-Bead-Green.jpg')"
@@ -71,6 +73,8 @@ var BoardLogic = React.createClass ({
     return (
       <div>
         <h1>Nine Men's Morris</h1>
+        <p className="status">{this.state.status}</p>
+        <button className="button"  onClick={this.resetGame}>Reset the game!</button>
         <div className="parent-div">
           {points}
             <BoardDesign/>
@@ -78,21 +82,12 @@ var BoardLogic = React.createClass ({
         <div className="game-details">
           <p>White: {this.state.white}</p>
           <p>Green: {this.state.green}</p>
-          <button className = "button"  onClick={this.resetGame}>Reset the game!</button>
         </div>
       </div>
     );
   },
   resetGame:function(){
-      this.state.white = 9;
-      this.state.green = 9;
-      this.state.currentPlayer = 1;
-
-      for (var i=0; i<24;i++){
-        this.state.board[i].initPlayer = -1;
-     }
-
-      this.forceUpdate();
+    this.setState(this.getInitialState())
   },
 
   startPos:function(index){

@@ -62,7 +62,7 @@ h1 {
 .game-details {
   border-width:7px;
   width:400px;
-  height:150px;
+  height:100px;
   margin:auto auto 30px auto;
   border-image: url('http://coryg89.github.io/assets/themes/img/wood-texture.jpg') 10 repeat;
 }
@@ -72,7 +72,7 @@ h1 {
   font-family:sans-serif;
   font-weight: bolder;
   text-align:left;
-  padding-left:30px;
+  padding-left:20px;
   display:inline-block;
   margin-bottom: 7px;
 }
@@ -94,22 +94,31 @@ h1 {
   font-size:0;
   box-sizing:border-box;
 }
-.button{
-  margin:10px 0 10px 10px;
-  width:150px;
-  height:60px;
-  font-size:20px;
-  outline:none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  color: #fff;
-  display:inline-block;
-  border-width:4px;
-  font-weight:bolder;
-  background: url('../images/wood2.jpg');
+
+.button, .status{
+  font-size:25px;
+  width:200px;
   border-image: url('http://coryg89.github.io/assets/themes/img/wood-texture.jpg') 10 repeat;
-  -moz-box-shadow: 0 2px 11px rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0 2px 11px rgba(0, 0, 0, 0.3);
-  box-shadow:0 2px 11px rgba(0, 0, 0, 0.3);
+  color:#fff;
+  appearance:none;
+  -webkit-appearance: none;
+  outline:none;
+  display:inline-block;
+  font-weight:bolder;
+  border-width:4px;
+  background:none;
+  margin:50px auto 0 auto;
+}
+.button {
+    margin-left:105px;
+    -moz-box-shadow: 0 2px 11px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 2px 11px rgba(0, 0, 0, 0.3);
+    box-shadow:0 2px 11px rgba(0, 0, 0, 0.3);
+}
+.status {
+  margin-left:38%;
+  height:50px;
+}
+.status p {
+  vertical-align:middle;
 }
