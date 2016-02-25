@@ -18,7 +18,7 @@ var BoardLogic = React.createClass ({
       green:9,
       currentPlayer:1,
       size:size,
-      status:'Set a piece'
+      status:'Start your turn'
     }
   },
 
@@ -30,12 +30,12 @@ var BoardLogic = React.createClass ({
         this.state.currentPlayer = 0;
         this.state.board[index].initPlayer = 1;
         this.state.white -= 1;
-        this.state.status = 'Player 1'
+        this.state.status = 'Your turn'
       } else if (currentPlayer === 0 && (this.state.green > 0)) {
         this.state.currentPlayer = 1;
         this.state.board[index].initPlayer = 0;
         this.state.green -= 1;
-        this.state.status = 'Player 2'
+        this.state.status = "Opponent's turn";
       }
       this.forceUpdate();
     }
