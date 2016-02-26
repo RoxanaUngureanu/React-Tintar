@@ -7,12 +7,12 @@
   background: url('../images/wood2.jpg');
 }
 h1 {
-  font-size:30px;
+  font-size:35px;
   font-family:sans-serif;
   color:white;
   margin:0 auto;
   padding-top:20px;
-  width:300px;
+  width:350px;
   border-image: url('http://coryg89.github.io/assets/themes/img/wood-texture.jpg') 10 repeat;
   border-width:5px;
   border-top:0;
@@ -117,7 +117,7 @@ h1 {
   box-shadow:0 2px 11px rgba(0, 0, 0, 0.3);
 }
 .status {
-  margin-left: 20%;
+  margin-left: 25%;
   height: 50px;
   line-height: 50px;
 }

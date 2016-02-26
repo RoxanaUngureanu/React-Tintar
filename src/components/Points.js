@@ -14,7 +14,7 @@ class Point extends React.Component {
       background:this.props.background
     };
     return (
-        <div className='points' style={style} onClick={this.onClick.bind(this)}></div>
+        <div className = 'points' style = {style} onClick = {this.onClick.bind(this)}></div>
     )
   }
 }
