@@ -3,8 +3,8 @@ require('styles/App.css');
 
 import React from 'react';
 
-var BoardDesign = React.createClass ({
-  render: function(){
+class BoardDesign extends React.Component{
+  render(){
     return (
       <div>
         <div className="first-board">
@@ -16,8 +16,8 @@ var BoardDesign = React.createClass ({
           <div className="inner-boards"></div>
         </div>
       </div>
-    );
+    )
   }
-});
+}
 
 export default BoardDesign;

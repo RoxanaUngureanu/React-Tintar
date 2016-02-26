@@ -2,17 +2,16 @@ require('normalize.css');
 require('styles/App.css');
 
 import React from 'react';
-import BoardLogic from './BoardLogic';
+import Board from './Board';
 
-var AppComponent = React.createClass ({
-  render: function(){
-
+class AppComponent extends React.Component {
+  render(){
     return (
       <div className = "board-container">
-        <BoardLogic/>
+        <Board/>
       </div>
-    );
+    )
   }
-});
+}
 
 export default AppComponent;

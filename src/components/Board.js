@@ -5,14 +5,15 @@ import React from 'react';
 import BoardDesign from './BoardDesign';
 import Point from './Points';
 
-var BoardLogic = React.createClass ({
-  getInitialState: function(){
+class Board extends React.Component {
+  constructor(props){
+    super(props);
     var board=[];
-    var size = 400;
-    for (var i=0; i<24;i++){
+    let size = 400;
+    for (let i=0; i<24;i++){
       board.push({initPlayer:-1})
     }
-    return {
+    this.state = {
       board:board,
       white:9,
       green:9,
@@ -20,9 +21,9 @@ var BoardLogic = React.createClass ({
       size:size,
       status:'Start your turn'
     }
-  },
+  }
 
-  onPointClick:function(index){
+  onPointClick(index){
     var initPlayer = this.state.board[index].initPlayer;
     var currentPlayer = this.state.currentPlayer;
     if (initPlayer === -1) {
@@ -39,9 +40,9 @@ var BoardLogic = React.createClass ({
       }
       this.forceUpdate();
     }
-  },
+  }
 
-  render: function(){
+  render(){
     var points=[];
     var top = 0;
     var left = 0;
@@ -85,16 +86,16 @@ var BoardLogic = React.createClass ({
         </div>
       </div>
     );
-  },
-  resetGame:function(){
+  }
+  resetGame(){
     this.setState(this.getInitialState())
-  },
+  }
 
-  startPos:function(index){
+  startPos(index){
     return Math.floor(index/8)*8
-  },
+  }
 
-  topPos:function(index,size){
+  topPos(index,size){
     if (index < 3){
       return 0
     } else if (index === 3 || index === 7){
@@ -102,9 +103,9 @@ var BoardLogic = React.createClass ({
     } else {
       return size
     }
-  },
+  }
 
-  leftPos:function(index,size){
+  leftPos(index,size){
     if (index === 0 || index > 5){
       return 0
     } else if (index === 1 || index === 5){
@@ -113,6 +114,6 @@ var BoardLogic = React.createClass ({
       return size
     }
   }
-});
+}
 
-export default BoardLogic;
+export default Board;
